@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task3/friends.dart';
 import 'package:task3/images.dart';
+import 'package:task3/types.dart';
+import 'package:task3/theme/custom_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,9 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Me',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CustomTheme.lightTheme,
       home: MyHomePage(),
     );
   }
@@ -27,8 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final labels = ['Black', 'Bold', 'Medium', 'Regular', 'Light'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Icons.arrow_back,
           color: Colors.black,
         ),
-        title: Text('Profile', style: TextStyle(color: Colors.black)),
+        title: Text('Profile', style: Theme.of(context).textTheme.headline6),
         actions: [
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -48,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ListView(
         children: <Widget>[
+          //me
           Column(
             children: [
               Padding(
@@ -59,65 +58,54 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Text(
                 'Tiana Rosse',
-                style: TextStyle(fontSize: 16),
+                style: Theme.of(context).textTheme.subtitle1,
               ),
               Text(
                 'Developer',
-                style: TextStyle(fontSize: 12),
+                style: Theme.of(context).textTheme.caption,
               ),
             ],
           ),
           Divider(),
+
+          //types
           Padding(
             padding: const EdgeInsets.fromLTRB(16.0, 0, 0, 0),
             child: Text(
               'Select Type',
-              style: TextStyle(fontSize: 16),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 0, 0, 0),
-            child: Container(
-              height: 30,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  for (var label in labels)
-                    Chip(
-                      label: Text('$label'),
-                    ),
-                ],
-              ),
-            ),
-          ),
+          addTypes(),
+
+          //friends
           Divider(),
           Padding(
             padding: const EdgeInsets.fromLTRB(16.0, 0, 0, 0),
             child: Text(
               'Friends',
-              style: TextStyle(fontSize: 16),
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
-          add_friend('a1', 'Corey George', 'Developer'),
-          add_friend('a2', 'Ahmad Vetrows', 'Developer'),
-          add_friend('a3', 'Cristofer Workman', 'Developer'),
-          add_friend('a4', 'Tiana Kosgaard', 'Developer'),
+          addFriend(),
           OutlinedButton.icon(
             onPressed: () {},
             label: Text(
               'ADD FRIEND',
-              style: TextStyle(fontSize: 14),
+              style: Theme.of(context).textTheme.button,
             ),
             icon: Icon(Icons.add),
           ),
+
+          //media
           Padding(
             padding: const EdgeInsets.fromLTRB(16.0, 0, 0, 0),
             child: Text(
               'My media',
-              style: TextStyle(fontSize: 24),
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
-          add_images(),
+          addImages(),
           Row(
             children: [
               Expanded(
@@ -125,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {},
                   child: Text(
                     'DELETE',
-                    style: TextStyle(fontSize: 14),
+                    style: Theme.of(context).textTheme.button,
                   ),
                 ),
               ),
@@ -134,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {},
                   child: Text(
                     'ADD',
-                    style: TextStyle(fontSize: 14),
+                    style: Theme.of(context).textTheme.button,
                   ),
                 ),
               ),

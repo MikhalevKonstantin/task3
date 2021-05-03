@@ -12,7 +12,7 @@ final images = [
   'Rectangle 14',
 ];
 
-add_images() {
+addImages() {
   return SizedBox(
     height: 400,
     child: GridView.count(
