@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task3/friends.dart';
 import 'package:task3/images.dart';
+import 'package:task3/theme/colors.dart';
 import 'package:task3/types.dart';
 import 'package:task3/theme/custom_theme.dart';
 
@@ -108,18 +109,18 @@ class _MyHomePageState extends State<MyHomePage> {
           addImages(),
           Row(
             children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () {},
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
                   child: Text(
                     'DELETE',
                     style: Theme.of(context).textTheme.button,
                   ),
                 ),
               ),
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: () {},
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ElevatedButton(
                   child: Text(
                     'ADD',
                     style: Theme.of(context).textTheme.button,

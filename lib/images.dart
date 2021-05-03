@@ -15,11 +15,34 @@ final images = [
 addImages() {
   return SizedBox(
     height: 400,
-    child: GridView.count(
-      crossAxisCount: 3,
-      children: <Widget>[
-        for (var image in images) Image.asset('assets/images/$image.png'),
-      ],
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 170,
+          // childAspectRatio: 3 / 2,
+          // crossAxisSpacing: 20,
+          // mainAxisSpacing: 20
+        ),
+        itemCount: images.length,
+        itemBuilder: (BuildContext context, index) {
+          return Container(
+            alignment: Alignment.center,
+            child: Image.asset('assets/images/${images[index]}.png'),
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(15)),
+          );
+        },
+      ),
     ),
   );
+  // return SizedBox(
+  //   height: 400,
+  //   child: GridView.count(
+  //     crossAxisCount: 3,
+  //     children: <Widget>[
+  //       for (var image in images) Image.asset('assets/images/$image.png'),
+  //     ],
+  //   ),
+  // );
 }
